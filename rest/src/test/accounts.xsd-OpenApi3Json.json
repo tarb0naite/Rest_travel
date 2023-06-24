@@ -1,0 +1,403 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API",
+    "contact": {},
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://example.com",
+      "variables": {}
+    }
+  ],
+  "paths": {},
+  "components": {
+    "schemas": {
+      "getAccountRequest": {
+        "title": "getAccountRequest",
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "xml": {
+              "name": "name",
+              "namespace": "http://spring.io/guides/gs-producing-web-service",
+              "prefix": "tns",
+              "attribute": false,
+              "wrapped": false
+            }
+          }
+        },
+        "description": "",
+        "xml": {
+          "name": "getAccountRequest",
+          "namespace": "http://spring.io/guides/gs-producing-web-service",
+          "prefix": "tns",
+          "attribute": false,
+          "wrapped": false
+        }
+      },
+      "accommodation": {
+        "title": "accommodation",
+        "required": [
+          "place"
+        ],
+        "type": "object",
+        "properties": {
+          "place": {
+            "type": "string",
+            "xml": {
+              "name": "place",
+              "namespace": "http://spring.io/guides/gs-producing-web-service",
+              "prefix": "tns",
+              "attribute": false,
+              "wrapped": false
+            }
+          }
+        },
+        "description": "",
+        "xml": {
+          "name": "accommodation",
+          "namespace": "http://spring.io/guides/gs-producing-web-service",
+          "prefix": "tns",
+          "attribute": false,
+          "wrapped": false
+        }
+      },
+      "transport": {
+        "title": "transport",
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "xml": {
+              "name": "name",
+              "namespace": "http://spring.io/guides/gs-producing-web-service",
+              "prefix": "tns",
+              "attribute": false,
+              "wrapped": false
+            }
+          }
+        },
+        "description": "",
+        "xml": {
+          "name": "transport",
+          "namespace": "http://spring.io/guides/gs-producing-web-service",
+          "prefix": "tns",
+          "attribute": false,
+          "wrapped": false
+        }
+      },
+      "type": {
+        "title": "type",
+        "enum": [
+          "SUMMER",
+          "WINTER",
+          "RELAXING"
+        ],
+        "type": "string",
+        "description": "",
+        "xml": {
+          "name": "type",
+          "namespace": "http://spring.io/guides/gs-producing-web-service",
+          "prefix": "tns",
+          "attribute": false,
+          "wrapped": false
+        }
+      },
+      "trip": {
+        "title": "trip",
+        "required": [
+          "cost",
+          "destination",
+          "accommodation",
+          "transport",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "cost": {
+            "type": "integer",
+            "format": "int32",
+            "xml": {
+              "name": "cost",
+              "namespace": "http://spring.io/guides/gs-producing-web-service",
+              "prefix": "tns",
+              "attribute": false,
+              "wrapped": false
+            }
+          },
+          "destination": {
+            "type": "string",
+            "xml": {
+              "name": "destination",
+              "namespace": "http://spring.io/guides/gs-producing-web-service",
+              "prefix": "tns",
+              "attribute": false,
+              "wrapped": false
+            }
+          },
+          "accommodation": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/accommodation"
+              },
+              {
+                "xml": {
+                  "name": "accommodation",
+                  "namespace": "http://spring.io/guides/gs-producing-web-service",
+                  "prefix": "tns",
+                  "attribute": false,
+                  "wrapped": false
+                }
+              }
+            ]
+          },
+          "transport": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/transport"
+              },
+              {
+                "xml": {
+                  "name": "transport",
+                  "namespace": "http://spring.io/guides/gs-producing-web-service",
+                  "prefix": "tns",
+                  "attribute": false,
+                  "wrapped": false
+                }
+              }
+            ]
+          },
+          "type": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/type"
+              },
+              {
+                "xml": {
+                  "name": "type",
+                  "namespace": "http://spring.io/guides/gs-producing-web-service",
+                  "prefix": "tns",
+                  "attribute": false,
+                  "wrapped": false
+                }
+              }
+            ]
+          }
+        },
+        "description": "",
+        "xml": {
+          "name": "trip",
+          "namespace": "http://spring.io/guides/gs-producing-web-service",
+          "prefix": "tns",
+          "attribute": false,
+          "wrapped": false
+        }
+      },
+      "offer": {
+        "title": "offer",
+        "required": [
+          "name",
+          "gift",
+          "cost"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "xml": {
+              "name": "name",
+              "namespace": "http://spring.io/guides/gs-producing-web-service",
+              "prefix": "tns",
+              "attribute": false,
+              "wrapped": false
+            }
+          },
+          "gift": {
+            "type": "string",
+            "xml": {
+              "name": "gift",
+              "namespace": "http://spring.io/guides/gs-producing-web-service",
+              "prefix": "tns",
+              "attribute": false,
+              "wrapped": false
+            }
+          },
+          "cost": {
+            "type": "integer",
+            "format": "int32",
+            "xml": {
+              "name": "cost",
+              "namespace": "http://spring.io/guides/gs-producing-web-service",
+              "prefix": "tns",
+              "attribute": false,
+              "wrapped": false
+            }
+          }
+        },
+        "description": "",
+        "xml": {
+          "name": "offer",
+          "namespace": "http://spring.io/guides/gs-producing-web-service",
+          "prefix": "tns",
+          "attribute": false,
+          "wrapped": false
+        }
+      },
+      "account": {
+        "title": "account",
+        "required": [
+          "name",
+          "password",
+          "trip",
+          "offer"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "xml": {
+              "name": "name",
+              "namespace": "http://spring.io/guides/gs-producing-web-service",
+              "prefix": "tns",
+              "attribute": false,
+              "wrapped": false
+            }
+          },
+          "password": {
+            "type": "string",
+            "xml": {
+              "name": "password",
+              "namespace": "http://spring.io/guides/gs-producing-web-service",
+              "prefix": "tns",
+              "attribute": false,
+              "wrapped": false
+            }
+          },
+          "trip": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/trip"
+              },
+              {
+                "xml": {
+                  "name": "trip",
+                  "namespace": "http://spring.io/guides/gs-producing-web-service",
+                  "prefix": "tns",
+                  "attribute": false,
+                  "wrapped": false
+                }
+              }
+            ]
+          },
+          "offer": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/offer"
+              },
+              {
+                "xml": {
+                  "name": "offer",
+                  "namespace": "http://spring.io/guides/gs-producing-web-service",
+                  "prefix": "tns",
+                  "attribute": false,
+                  "wrapped": false
+                }
+              }
+            ]
+          }
+        },
+        "description": "",
+        "xml": {
+          "name": "account",
+          "namespace": "http://spring.io/guides/gs-producing-web-service",
+          "prefix": "tns",
+          "attribute": false,
+          "wrapped": false
+        }
+      },
+      "getAccountResponse": {
+        "title": "getAccountResponse",
+        "required": [
+          "account"
+        ],
+        "type": "object",
+        "properties": {
+          "account": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/account"
+              },
+              {
+                "xml": {
+                  "name": "account",
+                  "namespace": "http://spring.io/guides/gs-producing-web-service",
+                  "prefix": "tns",
+                  "attribute": false,
+                  "wrapped": false
+                }
+              }
+            ]
+          }
+        },
+        "description": "",
+        "xml": {
+          "name": "getAccountResponse",
+          "namespace": "http://spring.io/guides/gs-producing-web-service",
+          "prefix": "tns",
+          "attribute": false,
+          "wrapped": false
+        }
+      },
+      "RootType": {
+        "title": "RootType",
+        "required": [
+          "getAccountRequest",
+          "getAccountResponse"
+        ],
+        "type": "object",
+        "properties": {
+          "getAccountRequest": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/getAccountRequest"
+              },
+              {
+                "xml": {
+                  "name": "getAccountRequest",
+                  "namespace": "http://spring.io/guides/gs-producing-web-service",
+                  "attribute": false,
+                  "wrapped": false
+                }
+              }
+            ]
+          },
+          "getAccountResponse": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/getAccountResponse"
+              },
+              {
+                "xml": {
+                  "name": "getAccountResponse",
+                  "namespace": "http://spring.io/guides/gs-producing-web-service",
+                  "attribute": false,
+                  "wrapped": false
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "tags": []
+}
